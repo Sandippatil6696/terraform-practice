@@ -1,10 +1,3 @@
-# configure provider
-provider "aws" {
-
-	region="us-east-1"
-}
-
-
 # key-pair 
 
 resource "aws_key_pair" "terra-ec2-key-pair" {
