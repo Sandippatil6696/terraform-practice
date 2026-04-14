@@ -59,10 +59,10 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_outbound_traffic" {
 
 resource "aws_instance" "my-terra-ec2"{
 	ami = "ami-0ec10929233384c7f"
-	instance_type = "t3.micro"
+	instance_type = var.ec2_instance_type
 	#count = 1	
 	tags = {
-    		Name = "terra-ec2-instance"
+    		Name = var.ec2_instance_name
   	}
 	
 	key_name = aws_key_pair.terra-ec2-key-pair.key_name
@@ -71,8 +71,8 @@ resource "aws_instance" "my-terra-ec2"{
 
 	root_block_device{
 		
-		volume_size = 10
-		volume_type = "gp3"		
+		volume_size = var.ec2_volume_size
+		volume_type = var.ec2_volume_type		
 	
 	}
 
@@ -80,5 +80,5 @@ resource "aws_instance" "my-terra-ec2"{
 
 resource "aws_ec2_instance_state" "instance_state" {
   instance_id = aws_instance.my-terra-ec2.id
-  state = "stopped"
+  state = var.ec2_instance_states
 }
