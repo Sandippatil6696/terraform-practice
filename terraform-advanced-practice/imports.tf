@@ -13,6 +13,6 @@ resource "aws_instance" "k8s-server" {
 }
 
 resource "aws_ec2_instance_state" "instance_stae" {
-    state = "running"
+    state = "stopped"
     instance_id = aws_instance.k8s-server.id
 }
