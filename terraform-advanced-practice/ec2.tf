@@ -67,7 +67,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_outbound_traffic" {
 resource "aws_instance" "my-terra-ec2"{
 	ami = "ami-0ec10929233384c7f"
 	instance_type = "t3.micro"
-	count = 1	
+	#count = 1	
 	tags = {
     		Name = "terra-ec2-instance"
   	}
@@ -86,6 +86,6 @@ resource "aws_instance" "my-terra-ec2"{
 }
 
 resource "aws_ec2_instance_state" "instance_state" {
-  instance_id = aws_instance.my-terra-ec2[0]
+  instance_id = aws_instance.my-terra-ec2.id
   state = "running"
 }
