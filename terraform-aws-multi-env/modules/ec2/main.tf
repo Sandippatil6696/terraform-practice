@@ -63,7 +63,7 @@ resource "aws_instance" "my-terra-ec2"{
 	count = var.ec2_instance_count	
 
 	tags = {
-    		Name = "${var.env}-${var.ec2_instance_name}"
+    		Name = "${var.env}-${var.ec2_instance_name}-${count.index + 1}"
             Environment = var.env
   }
   	
@@ -82,6 +82,6 @@ resource "aws_instance" "my-terra-ec2"{
 }
 
 resource "aws_ec2_instance_state" "instance_state" {
-  instance_id = aws_instance.my-terra-ec2.id
+  instance_id = aws_instance.my-terra-ec2.id[count.index]
   state = var.ec2_instance_states
 }
