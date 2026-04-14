@@ -86,6 +86,6 @@ resource "aws_instance" "my-terra-ec2"{
 }
 
 resource "aws_ec2_instance_state" "instance_state" {
-  instance_id = aws_instance.my-terra-ec2.id
+  instance_id = aws_instance.my-terra-ec2[0]
   state = "running"
 }
