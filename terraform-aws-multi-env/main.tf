@@ -15,8 +15,8 @@ locals {
 
         prod={
             instance_count = 4
-            s3_bucket_count = 1
-            dynadb_tbl_count = 1
+            s3_bucket_count = 2
+            dynadb_tbl_count = 2
         }
    }
   current_env = lookup(local.env , terraform.workspace , local.env["dev"])
@@ -28,6 +28,7 @@ module "ec2" {
   source = "./modules/ec2"
   env = terraform.workspace
   ec2_instance_count = local.current_env.instance_count
+  ec2_instance_states = "running"
 }
 
 
