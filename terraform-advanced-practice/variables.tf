@@ -1,6 +1,6 @@
 variable "ec2_instance_name" {
   type        = string
-  default     = "terra-automate-server"
+  default     = "terra-ec2-instance"
   description = "This is an ec2 instance name"
 }
 
@@ -25,6 +25,6 @@ variable "ec2_volume_size" {
 
 variable "ec2_instance_states" {
   type        = string
-  default     = "stopped"
+  default     = "running"
   description = "This is an ec2 instance state"
 }
